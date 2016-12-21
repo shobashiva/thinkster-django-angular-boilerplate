@@ -1,0 +1,3 @@
+[submodule "chef-tdab"]
+	path = chef-tdab
+	url = https://github.com/shobashiva/chef-tdab.git
