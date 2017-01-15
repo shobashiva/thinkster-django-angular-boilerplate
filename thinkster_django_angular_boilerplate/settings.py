@@ -38,6 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'rest_framework',
     'compressor',
+    'django_extensions',
+    'authentication',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -60,11 +62,24 @@ WSGI_APPLICATION = 'thinkster_django_angular_boilerplate.wsgi.application'
 
 import dj_database_url
 
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default='sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+#     )
+# }
+
 DATABASES = {
-    'default': dj_database_url.config(
-        default='sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'chem',
+        'USER': 'postgres',
+        'PASSWORD': 'password',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    },
 }
+
+AUTH_USER_MODEL = 'authentication.Account'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
